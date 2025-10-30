@@ -1,8 +1,8 @@
-function errorServer(err, req, res, next) {
+function errorHandler(err, req, res, next) {
     res.status(500)
     res.json({
         error: err.message,
     });
 };
 
-module.exports = errorServer;
+module.exports = errorHandler;
