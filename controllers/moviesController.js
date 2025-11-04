@@ -6,7 +6,13 @@ function index(req, res) {
 
     connection.query(sql, (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
-        res.json(results);
+        
+        const moviesWithFullPath = results.map(movie => ({
+            ...movie,
+            image: `${req.imagePath}${movie.image}`
+          }));
+        
+        res.json(moviesWithFullPath);
     });
 }
 

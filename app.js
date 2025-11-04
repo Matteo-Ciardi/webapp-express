@@ -1,8 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 3000;
 
 const imagePath = require("./middlewares/imagePath");
+
+app.use(cors({
+    origin: process.env.FE_APP
+}))
 
 app.use(express.static('public'));
 
